@@ -46,7 +46,7 @@ def index(request):
 
 def posts_by_tag(request, tag_id):
     tag = get_object_or_404(Tag, id=tag_id)
-    entries_list = tag.entry_set.all()
+    entries_list = tag.entry_set.all().order_by('-created_date')
     paginator = Paginator(entries_list, 10)
     page = request.GET.get('page')
     try:
