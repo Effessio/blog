@@ -1,0 +1,25 @@
+.container
+{
+    position:absolute;
+    width:600px;
+    padding-bottom: 40px;
+}
+
+.container div
+{
+    position: relative;
+}
+
+.main_block
+{
+   float:left;
+   width: 40%;
+   border-right: 1px solid black;
+}
+
+
+.tag_block
+{
+  float:right;
+  width:25%;
+}

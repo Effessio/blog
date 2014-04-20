@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" >
+        <div class="main_block" style="width:70%">
+           {% block content %}
+           {% endblock %}
+        </div>
+        <div class="tag_block">
+        <h3>Список тегов</h3>
+        {% for tag in context.tag_list %}
+        <p> <a href="{% url 'posts_by_tag' tag.id %}"> {{tag.tag_text}}</a></p>
+        {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

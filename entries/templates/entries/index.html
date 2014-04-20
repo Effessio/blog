@@ -1,0 +1,25 @@
+{% extends "entries/base.html" %}
+        {% block content%}
+            <h2><a href="{% url 'index' %}">На главную</a></h2>
+            {% for entry in context.entries_list %}
+                <h3><a href="{% url 'entry_page' entry.id %}">{{entry.title}}</a></h3>
+                {{entry.text|safe}}
+                <p> Комментариев:  {{entry.comment_set.count}} </p>
+                <p><strong>Теги: </strong>
+                    {% for tag in entry.tag_list.all %}
+                        <a href="{% url 'posts_by_tag' tag.id %}"> {{tag.tag_text}}</a>
+                    {% endfor %}
+                </p>
+            <hr/>
+            {% endfor %}
+
+            {% if context.entries_list.has_previous %}
+                        <a href="?page={{ context.entries_list.previous_page_number }}">Предыдущая</a>
+                    {% endif %}
+                        Страница {{ context.entries_list.number }} из {{ context.entries_list.paginator.num_pages }}.
+                    {% if context.entries_list.has_next %}
+                        <a href="?page={{ context.entries_list.next_page_number }}">Следующая</a>
+                    {% endif %}
+
+        {% endblock %}
+
